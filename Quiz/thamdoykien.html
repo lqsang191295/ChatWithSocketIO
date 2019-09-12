@@ -3,12 +3,37 @@
     <meta charset="UTF-8">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
+        html, body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
         * {
             outline: none;
         }
 
         button {
             border: none;
+        }
+
+        /* width */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #cccccc; 
+            border-radius: 5px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555; 
         }
 
         input.input-text {
@@ -50,14 +75,13 @@
             height: 17px;
             border: 2px solid #4b85ff;
             border-radius: 100%;
-            background: #4b85ff;
         }
         [type="radio"]:checked + label:after,
         [type="radio"]:not(:checked) + label:after {
             content: "\f00c";
             width: 16px;
             height: 15px;
-            color: #fff;
+            color: #4b85ff;
             position: absolute;
             top: 0px;
             left: 2.5px;
@@ -148,10 +172,7 @@
         .box-chat {
             float: left;
             width: 340px;
-            border: 1px solid #ccc;
-            padding: 5px;
-            margin: 5px;
-            height: calc(100% - 20px);
+            height: 100%;
             position: relative;
         }
 
@@ -165,7 +186,13 @@
             padding-left: 5px;
             padding-right: 5px;
             color: #797979;
+            font-style: italic;
             font-weight: bold;
+        }
+
+        .chat-line-message .profile-message {
+            line-height: 20px;
+            font-size: 12px;
         }
 
         .profile-img img{
@@ -179,7 +206,7 @@
             bottom: 0;
             right: 0;
             left: 0;
-            padding: 10px;
+            padding: 10px 5px;
         }
 
         .chat-line-bottom-input {
@@ -228,6 +255,10 @@
             background: #dadada;
         }
 
+        .box-chat-message {
+            height: calc(100% - 87px);
+            overflow-y: auto;
+        }
     </style>
 </head>
 <body>
@@ -267,47 +298,245 @@
                 Tạo cuộc thăm dò ý kiến
             </button>
         </div>
+
+        <!--Chờ xem có ai trả lời hay không-->
+
+        <div style="height: 30px"></div>
+        <style>
+            .question-text {
+                font-size: 15px;
+                padding-bottom: 10px;
+            }
+            .answer-item-text {
+                font-size: 13px;
+                color: #4c4c4c;
+                line-height: 25px;
+            }
+            .answer-item-number {
+                width: 300px;
+                height: 10px;
+                background: #ccc;
+                position: relative;
+            }
+            .answer-item {
+                padding: 5px 0;
+            }
+        </style>
+        <div class="question-text">
+                Get started with Node to use everything in the JS ecosystem, including Expo and React Native. We recommend using the latest Node version.
+        </div>
+
+        <div class="answer-options">
+            <div class="answer-item">
+                <div class="answer-item-text">
+                    <span>Câu trả lời thứ 1</span>
+                    <span style="border: 1px solid #4b85ff; border-radius: 50%; padding: 0 1px;">
+                        <i class="fa fa-check" style="color: #4b85ff;" title="Đáp án"></i>
+                    </span>
+                </div>
+                <div class="answer-item-number">
+                    <img style="width: 20px;
+                    border-radius: 50%;
+                    position: absolute;
+                    right: -30px;
+                    top: -5px;
+                    border: 1px solid #ccc;
+                    z-index: 2"
+                    src="https://scontent.fsgn4-1.fna.fbcdn.net/v/t1.0-1/c14.0.50.50a/p50x50/12507112_143934759318223_3309368331210845431_n.jpg?_nc_cat=101&_nc_oc=AQlvHuWGJsJd0Jf1jJYlQDjln0dC9Pj8p_yvaIG-5iEQD6Apk49ztd9dLwIsrA5nOHSIqLqMgbKjrEfvaolx1mMi&_nc_ht=scontent.fsgn4-1.fna&oh=3d2d4f4376dd010e739f395c6db9723a&oe=5DFD7662" />
+                    <img style="width: 20px;
+                    border-radius: 50%;
+                    position: absolute;
+                    right: -40px;
+                    top: -5px;
+                    border: 1px solid #ccc;
+                    z-index: 1"
+                    src="https://scontent.fsgn4-1.fna.fbcdn.net/v/t1.0-1/p50x50/68515863_2363744130533908_5380527521378861056_n.jpg?_nc_cat=105&_nc_oc=AQlLzUh_DfWPoEYXdoAQ_G6sLabyOMO3FfP5922kLIld4K88hyMMGwYN7_4N_iVMFEFIZdbUTZD7J_DLCin_Njoq&_nc_ht=scontent.fsgn4-1.fna&oh=d55947ce1fee77827859ebfae37ff8f7&oe=5DF0B617" />
+                    <img style="width: 20px;
+                    border-radius: 50%;
+                    position: absolute;
+                    right: -50px;
+                    top: -5px;
+                    border: 1px solid #ccc;
+                    z-index: 0"
+                    src="https://scontent.fsgn3-1.fna.fbcdn.net/v/t1.0-1/p50x50/42216174_1945019808938760_490540872144781312_n.jpg?_nc_cat=111&_nc_oc=AQmfX0U0BGOp_oUgaPantkfiJhzBk2GyZhve9Yy_ALg23HXZM3epmTr-h0ff6HnhJVR7OGG2Ecmb430hXunmYS-F&_nc_ht=scontent.fsgn3-1.fna&oh=33547b0e660aaee1a625a6da0060bc16&oe=5DF2CC39" />
+                </div> 
+            </div>
+            <div class="answer-item">
+                <div class="answer-item-text">Câu trả lời thứ 2</div>
+                <div class="answer-item-number" style="width: 100px">
+                    <img style="width: 20px;
+                    border-radius: 50%;
+                    position: absolute;
+                    right: -30px;
+                    top: -5px;
+                    border: 1px solid #ccc;
+                    z-index: 2"
+                    src="https://scontent.fsgn4-1.fna.fbcdn.net/v/t1.0-1/c14.0.50.50a/p50x50/12507112_143934759318223_3309368331210845431_n.jpg?_nc_cat=101&_nc_oc=AQlvHuWGJsJd0Jf1jJYlQDjln0dC9Pj8p_yvaIG-5iEQD6Apk49ztd9dLwIsrA5nOHSIqLqMgbKjrEfvaolx1mMi&_nc_ht=scontent.fsgn4-1.fna&oh=3d2d4f4376dd010e739f395c6db9723a&oe=5DFD7662" />
+                </div> 
+            </div>
+            <div class="answer-item">
+                <div class="answer-item-text">Câu trả lời thứ 3</div>
+                <div class="answer-item-number" style="width: 200px">
+                    <img style="width: 20px;
+                    border-radius: 50%;
+                    position: absolute;
+                    right: -30px;
+                    top: -5px;
+                    border: 1px solid #ccc;
+                    z-index: 2"
+                    src="https://scontent.fsgn4-1.fna.fbcdn.net/v/t1.0-1/c14.0.50.50a/p50x50/12507112_143934759318223_3309368331210845431_n.jpg?_nc_cat=101&_nc_oc=AQlvHuWGJsJd0Jf1jJYlQDjln0dC9Pj8p_yvaIG-5iEQD6Apk49ztd9dLwIsrA5nOHSIqLqMgbKjrEfvaolx1mMi&_nc_ht=scontent.fsgn4-1.fna&oh=3d2d4f4376dd010e739f395c6db9723a&oe=5DFD7662" />
+                    <img style="width: 20px;
+                    border-radius: 50%;
+                    position: absolute;
+                    right: -40px;
+                    top: -5px;
+                    border: 1px solid #ccc;
+                    z-index: 1"
+                    src="https://scontent.fsgn4-1.fna.fbcdn.net/v/t1.0-1/p50x50/68515863_2363744130533908_5380527521378861056_n.jpg?_nc_cat=105&_nc_oc=AQlLzUh_DfWPoEYXdoAQ_G6sLabyOMO3FfP5922kLIld4K88hyMMGwYN7_4N_iVMFEFIZdbUTZD7J_DLCin_Njoq&_nc_ht=scontent.fsgn4-1.fna&oh=d55947ce1fee77827859ebfae37ff8f7&oe=5DF0B617" />
+                </div> 
+            </div>
+        </div>
+
     </div>
 
     <!--Div chat box-->
     <div class="box-chat">
-        <div class="chat-line__status">
-            <span class="">Chào mừng bạn đến với phòng trò chuyện!</span>
-        </div>
+        <div style="padding: 5px 5px 0 5px">
+            <div class="box-chat-message">
+                <div class="chat-line__status">
+                    <span class="">Chào mừng bạn đến với phòng trò chuyện!</span>
+                </div>
 
-        <div class="chat-line-message">
-            <span class="profile profile-img">
-                <img src="https://yt3.ggpht.com/-J9PM3Bz_Msk/AAAAAAAAAAI/AAAAAAAAAAA/ntSGZ_bc66Y/s32-c-k-no-mo-rj-c0xffffff/photo.jpg" width="21px"
-                height="21px"/>
-            </span>
-            <span class="profile profile-name">
-                Sang Le:
-            </span>
-            <span class="profile profile-message">Hello!</span>
+                <div class="chat-line-message">
+                    <span class="profile profile-img">
+                        <img src="https://yt3.ggpht.com/-J9PM3Bz_Msk/AAAAAAAAAAI/AAAAAAAAAAA/ntSGZ_bc66Y/s32-c-k-no-mo-rj-c0xffffff/photo.jpg" width="21px"
+                        height="21px"/>
+                    </span>
+                    <span class="profile profile-name">
+                        Sang Le:
+                    </span>
+                    <span class="profile profile-message">Hello!</span>
+                </div>
+                <div class="chat-line-message">
+                    <span class="profile profile-img">
+                        <img src="https://yt3.ggpht.com/-J9PM3Bz_Msk/AAAAAAAAAAI/AAAAAAAAAAA/ntSGZ_bc66Y/s32-c-k-no-mo-rj-c0xffffff/photo.jpg" width="21px"
+                            height="21px"/>
+                    </span>
+                    <span class="profile profile-name">
+                        Sang Le:
+                    </span>
+                    <span class="profile profile-message">What a dumdum</span>
+                </div>
+                <div class="chat-line-message">
+                    <span class="profile profile-img">
+                        <img src="https://yt3.ggpht.com/-J9PM3Bz_Msk/AAAAAAAAAAI/AAAAAAAAAAA/ntSGZ_bc66Y/s32-c-k-no-mo-rj-c0xffffff/photo.jpg" width="21px"
+                            height="21px"/>
+                    </span>
+                    <span>
+                        <span class="profile profile-name">
+                            Sang Le:
+                        </span>
+                        <span class="profile profile-message">snoozle225 Yeah you can't sign up for a new account but you can sign in</span>
+                    </span>
+                </div>
+                <div class="chat-line-message">
+                        <span class="profile profile-img">
+                            <img src="https://yt3.ggpht.com/-J9PM3Bz_Msk/AAAAAAAAAAI/AAAAAAAAAAA/ntSGZ_bc66Y/s32-c-k-no-mo-rj-c0xffffff/photo.jpg" width="21px"
+                                height="21px"/>
+                        </span>
+                        <span>
+                            <span class="profile profile-name">
+                                Sang Le:
+                            </span>
+                            <span class="profile profile-message">snoozle225 Yeah you can't sign up for a new account but you can sign in</span>
+                        </span>
+                    </div>
+                    <div class="chat-line-message">
+                            <span class="profile profile-img">
+                                <img src="https://yt3.ggpht.com/-J9PM3Bz_Msk/AAAAAAAAAAI/AAAAAAAAAAA/ntSGZ_bc66Y/s32-c-k-no-mo-rj-c0xffffff/photo.jpg" width="21px"
+                                    height="21px"/>
+                            </span>
+                            <span>
+                                <span class="profile profile-name">
+                                    Sang Le:
+                                </span>
+                                <span class="profile profile-message">snoozle225 Yeah you can't sign up for a new account but you can sign in</span>
+                            </span>
+                        </div>
+                        <div class="chat-line-message">
+                                <span class="profile profile-img">
+                                    <img src="https://yt3.ggpht.com/-J9PM3Bz_Msk/AAAAAAAAAAI/AAAAAAAAAAA/ntSGZ_bc66Y/s32-c-k-no-mo-rj-c0xffffff/photo.jpg" width="21px"
+                                        height="21px"/>
+                                </span>
+                                <span>
+                                    <span class="profile profile-name">
+                                        Sang Le:
+                                    </span>
+                                    <span class="profile profile-message">snoozle225 Yeah you can't sign up for a new account but you can sign in</span>
+                                </span>
+                            </div>
+                            <div class="chat-line-message">
+                                    <span class="profile profile-img">
+                                        <img src="https://yt3.ggpht.com/-J9PM3Bz_Msk/AAAAAAAAAAI/AAAAAAAAAAA/ntSGZ_bc66Y/s32-c-k-no-mo-rj-c0xffffff/photo.jpg" width="21px"
+                                            height="21px"/>
+                                    </span>
+                                    <span>
+                                        <span class="profile profile-name">
+                                            Sang Le:
+                                        </span>
+                                        <span class="profile profile-message">snoozle225 Yeah you can't sign up for a new account but you can sign in</span>
+                                    </span>
+                                </div>
+                                <div class="chat-line-message">
+                                        <span class="profile profile-img">
+                                            <img src="https://yt3.ggpht.com/-J9PM3Bz_Msk/AAAAAAAAAAI/AAAAAAAAAAA/ntSGZ_bc66Y/s32-c-k-no-mo-rj-c0xffffff/photo.jpg" width="21px"
+                                                height="21px"/>
+                                        </span>
+                                        <span>
+                                            <span class="profile profile-name">
+                                                Sang Le:
+                                            </span>
+                                            <span class="profile profile-message">snoozle225 Yeah you can't sign up for a new account but you can sign in</span>
+                                        </span>
+                                    </div>
+                                    <div class="chat-line-message">
+                                            <span class="profile profile-img">
+                                                <img src="https://yt3.ggpht.com/-J9PM3Bz_Msk/AAAAAAAAAAI/AAAAAAAAAAA/ntSGZ_bc66Y/s32-c-k-no-mo-rj-c0xffffff/photo.jpg" width="21px"
+                                                    height="21px"/>
+                                            </span>
+                                            <span>
+                                                <span class="profile profile-name">
+                                                    Sang Le:
+                                                </span>
+                                                <span class="profile profile-message">snoozle225 Yeah you can't sign up for a new account but you can sign in</span>
+                                            </span>
+                                        </div>
+                                        <div class="chat-line-message">
+                                                <span class="profile profile-img">
+                                                    <img src="https://yt3.ggpht.com/-J9PM3Bz_Msk/AAAAAAAAAAI/AAAAAAAAAAA/ntSGZ_bc66Y/s32-c-k-no-mo-rj-c0xffffff/photo.jpg" width="21px"
+                                                        height="21px"/>
+                                                </span>
+                                                <span>
+                                                    <span class="profile profile-name">
+                                                        Sang Le:
+                                                    </span>
+                                                    <span class="profile profile-message">snoozle225 Yeah you can't sign up for a new account but you can sign in</span>
+                                                </span>
+                                            </div>
+                                            <div class="chat-line-message">
+                                                    <span class="profile profile-img">
+                                                        <img src="https://yt3.ggpht.com/-J9PM3Bz_Msk/AAAAAAAAAAI/AAAAAAAAAAA/ntSGZ_bc66Y/s32-c-k-no-mo-rj-c0xffffff/photo.jpg" width="21px"
+                                                            height="21px"/>
+                                                    </span>
+                                                    <span>
+                                                        <span class="profile profile-name">
+                                                            Sang Le:
+                                                        </span>
+                                                        <span class="profile profile-message">snoozle225 Yeah you can't sign up for a new account but you can sign in</span>
+                                                    </span>
+                                                </div>
+            </div>
         </div>
-        <div class="chat-line-message">
-            <span class="profile profile-img">
-                <img src="https://yt3.ggpht.com/-J9PM3Bz_Msk/AAAAAAAAAAI/AAAAAAAAAAA/ntSGZ_bc66Y/s32-c-k-no-mo-rj-c0xffffff/photo.jpg" width="21px"
-                     height="21px"/>
-            </span>
-            <span class="profile profile-name">
-                Sang Le:
-            </span>
-            <span class="profile profile-message">What a dumdum</span>
-        </div>
-        <div class="chat-line-message">
-            <span class="profile profile-img">
-                <img src="https://yt3.ggpht.com/-J9PM3Bz_Msk/AAAAAAAAAAI/AAAAAAAAAAA/ntSGZ_bc66Y/s32-c-k-no-mo-rj-c0xffffff/photo.jpg" width="21px"
-                     height="21px"/>
-            </span>
-            <span>
-                <span class="profile profile-name">
-                    Sang Le:
-                </span>
-                <span class="profile profile-message">snoozle225 Yeah you can't sign up for a new account but you can sign in</span>
-            </span>
-        </div>
-
         <!---->
         <div class="chat-line-bottom">
             <div class="chat-line-bottom-t">
@@ -319,40 +548,268 @@
                         position: absolute;
                         bottom: 35px;
                         border-radius: 3px;
+                        background: #fff;
+                        display: none;
                     }
 
                     .popup-chat-line .header{
                         padding: 6px;
                         text-align: right;
+                        position: relative;
+                    }
+
+                    .popup-chat-line .header .close{
+                        padding-bottom: 5px;
                     }
 
                     .popup-chat-line .body {
                         padding: 0 5px;
+                        height: calc(100% - 65px);
+                        overflow-y: auto;
                     }
 
-                    .popup-chat-line .body input{
+                    .popup-chat-line .header input{
                         width: 100%;
                         border: 1px solid #bdc7d8;
                         background: #f2f2f2;
-                        padding: 9px 39px 9px 9px;
+                        padding: 9px 9px 9px 27px;
                         font-size: 11px;
                         border-radius: 3px;
+                    }
+
+                    .popup-chat-line .header .search {
+                        width: 20px;
+                        height: 18px;
+                        margin: 3px 3px 3px 0;
+                        padding: 4px 6px;
+                        cursor: pointer;
+                        border-radius: 3px;
+                        left: 3px;
+                        position: absolute;
+                        top: 27px;
                     }
                 </style>
 
                 <div class="popup-chat-line">
                     <div class="header">
-                        <div class="close">X</div>
+                        <div class="close">
+                            <i class="fa fa-times" aria-hidden="true"
+                                onclick="closePopup()"></i>
+                        </div>
+                        <input class="" type="text" placeholder="Tìm kiếm Icon">
+                        <i class="fa fa-search search" aria-hidden="true"></i>
                     </div>
+                    <style>
+                        .icon-fb {
+                            display: inline-block;
+                            cursor: pointer;
+                            width: 24px;
+                            height: 24px;
+                            position: relative;
+                            background-image: url("http://vforum.vn/iconfacebook/images/iconfacebook.jpg");
+                        }
+
+                    </style>
                     <div class="body">
-                        <input class="" type="text" placeholder="Gửi tin nhắn">
+                        <div class="icon-fb" style="background-position: -2px -2px;">
+                        </div>
+                        <div class="icon-fb" style="background-position: -28px -2px;">
+                        </div>
+                        <div class="icon-fb" style="background-position: -28px -2px;">
+                        </div>
+                        <div class="icon-fb" style="background-position: -28px -2px;">
+                        </div>
+                        <div class="icon-fb" style="background-position: -28px -2px;">
+                        </div>
+                        <div class="icon-fb" style="background-position: -2px -2px;">
+                            </div>
+                            <div class="icon-fb" style="background-position: -28px -2px;">
+                            </div>
+                            <div class="icon-fb" style="background-position: -28px -2px;">
+                            </div>
+                            <div class="icon-fb" style="background-position: -28px -2px;">
+                            </div>
+                            <div class="icon-fb" style="background-position: -28px -2px;">
+                            </div>
+                            <div class="icon-fb" style="background-position: -2px -2px;">
+                                </div>
+                                <div class="icon-fb" style="background-position: -28px -2px;">
+                                </div>
+                                <div class="icon-fb" style="background-position: -28px -2px;">
+                                </div>
+                                <div class="icon-fb" style="background-position: -28px -2px;">
+                                </div>
+                                <div class="icon-fb" style="background-position: -28px -2px;">
+                                </div>
+                                <div class="icon-fb" style="background-position: -2px -2px;">
+                                    </div>
+                                    <div class="icon-fb" style="background-position: -28px -2px;">
+                                    </div>
+                                    <div class="icon-fb" style="background-position: -28px -2px;">
+                                    </div>
+                                    <div class="icon-fb" style="background-position: -28px -2px;">
+                                    </div>
+                                    <div class="icon-fb" style="background-position: -28px -2px;">
+                                    </div>
+                                    <div class="icon-fb" style="background-position: -2px -2px;">
+                                        </div>
+                                        <div class="icon-fb" style="background-position: -28px -2px;">
+                                        </div>
+                                        <div class="icon-fb" style="background-position: -28px -2px;">
+                                        </div>
+                                        <div class="icon-fb" style="background-position: -28px -2px;">
+                                        </div>
+                                        <div class="icon-fb" style="background-position: -28px -2px;">
+                                        </div>
+                                        <div class="icon-fb" style="background-position: -2px -2px;">
+                                            </div>
+                                            <div class="icon-fb" style="background-position: -28px -2px;">
+                                            </div>
+                                            <div class="icon-fb" style="background-position: -28px -2px;">
+                                            </div>
+                                            <div class="icon-fb" style="background-position: -28px -2px;">
+                                            </div>
+                                            <div class="icon-fb" style="background-position: -28px -2px;">
+                                            </div>
+                                            <div class="icon-fb" style="background-position: -2px -2px;">
+                                                </div>
+                                                <div class="icon-fb" style="background-position: -28px -2px;">
+                                                </div>
+                                                <div class="icon-fb" style="background-position: -28px -2px;">
+                                                </div>
+                                                <div class="icon-fb" style="background-position: -28px -2px;">
+                                                </div>
+                                                <div class="icon-fb" style="background-position: -28px -2px;">
+                                                </div>
+                                                <div class="icon-fb" style="background-position: -2px -2px;">
+                                                    </div>
+                                                    <div class="icon-fb" style="background-position: -28px -2px;">
+                                                    </div>
+                                                    <div class="icon-fb" style="background-position: -28px -2px;">
+                                                    </div>
+                                                    <div class="icon-fb" style="background-position: -28px -2px;">
+                                                    </div>
+                                                    <div class="icon-fb" style="background-position: -28px -2px;">
+                                                    </div>
+                                                    <div class="icon-fb" style="background-position: -2px -2px;">
+                                                        </div>
+                                                        <div class="icon-fb" style="background-position: -28px -2px;">
+                                                        </div>
+                                                        <div class="icon-fb" style="background-position: -28px -2px;">
+                                                        </div>
+                                                        <div class="icon-fb" style="background-position: -28px -2px;">
+                                                        </div>
+                                                        <div class="icon-fb" style="background-position: -28px -2px;">
+                                                        </div>
+                                                        <div class="icon-fb" style="background-position: -2px -2px;">
+                                                            </div>
+                                                            <div class="icon-fb" style="background-position: -28px -2px;">
+                                                            </div>
+                                                            <div class="icon-fb" style="background-position: -28px -2px;">
+                                                            </div>
+                                                            <div class="icon-fb" style="background-position: -28px -2px;">
+                                                            </div>
+                                                            <div class="icon-fb" style="background-position: -28px -2px;">
+                                                            </div>
+                                                            <div class="icon-fb" style="background-position: -2px -2px;">
+                                                                </div>
+                                                                <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                </div>
+                                                                <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                </div>
+                                                                <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                </div>
+                                                                <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                </div>
+                                                                <div class="icon-fb" style="background-position: -2px -2px;">
+                                                                    </div>
+                                                                    <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                    </div>
+                                                                    <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                    </div>
+                                                                    <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                    </div>
+                                                                    <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                    </div>
+                                                                    <div class="icon-fb" style="background-position: -2px -2px;">
+                                                                        </div>
+                                                                        <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                        </div>
+                                                                        <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                        </div>
+                                                                        <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                        </div>
+                                                                        <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                        </div>
+                                                                        <div class="icon-fb" style="background-position: -2px -2px;">
+                                                                            </div>
+                                                                            <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                            </div>
+                                                                            <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                            </div>
+                                                                            <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                            </div>
+                                                                            <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                            </div>
+                                                                            <div class="icon-fb" style="background-position: -2px -2px;">
+                                                                                </div>
+                                                                                <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                                </div>
+                                                                                <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                                </div>
+                                                                                <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                                </div>
+                                                                                <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                                </div>
+                                                                                <div class="icon-fb" style="background-position: -2px -2px;">
+                                                                                    </div>
+                                                                                    <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                                    </div>
+                                                                                    <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                                    </div>
+                                                                                    <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                                    </div>
+                                                                                    <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                                    </div>
+                                                                                    <div class="icon-fb" style="background-position: -2px -2px;">
+                                                                                        </div>
+                                                                                        <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                                        </div>
+                                                                                        <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                                        </div>
+                                                                                        <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                                        </div>
+                                                                                        <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                                        </div>
+                                                                                        <div class="icon-fb" style="background-position: -2px -2px;">
+                                                                                            </div>
+                                                                                            <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                                            </div>
+                                                                                            <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                                            </div>
+                                                                                            <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                                            </div>
+                                                                                            <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                                            </div>
+                                                                                            <div class="icon-fb" style="background-position: -2px -2px;">
+                                                                                                </div>
+                                                                                                <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                                                </div>
+                                                                                                <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                                                </div>
+                                                                                                <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                                                </div>
+                                                                                                <div class="icon-fb" style="background-position: -28px -2px;">
+                                                                                                </div>
+                        
                     </div>
                 </div>
 
                 <!--End popup-->
 
                 <input class="chat-line-bottom-input" type="text" placeholder="Gửi tin nhắn"/>
-                <div class="chat-line-bottom-icon-input">
+                <div class="chat-line-bottom-icon-input"
+                    onclick="displayPopup()">
                     <div class="chat-line-bottom-icon">
                             <div class="tw-align-items-center tw-full-width tw-icon tw-icon--fill tw-inline-flex"><div class="tw-aspect tw-aspect--align-top"><div class="tw-aspect__spacer"></div><svg class="tw-icon__svg" width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px"><path d="M10 1a9 9 0 0 0-9 9 9 9 0 0 0 9 9 9 9 0 0 0 9-9 9 9 0 0 0-9-9m0 2c3.859 0 7 3.141 7 7s-3.141 7-7 7-7-3.141-7-7 3.141-7 7-7zm4 6a1 1 0 1 0-2 0 1 1 0 1 0 2 0zM8 9a1 1 0 1 0-2 0 1 1 0 1 0 2 0zm4.571 3H7.428c-.237 0-.428.168-.428.375C7 13.822 8.345 15 10 15c1.654 0 3-1.178 3-2.625 0-.207-.192-.375-.429-.375z" fill-rule="evenodd"></path></svg></div></div></div>
                 </div>
@@ -377,6 +834,16 @@
 <script>
     function onClick(event) {
         console.log(event)
+    }
+    function closePopup() {
+        $(".popup-chat-line").css({
+            "display": "none"
+        })
+    }
+    function displayPopup() {
+        $(".popup-chat-line").css({
+            "display": "block"
+        })
     }
 </script>
 </body>
