@@ -1,0 +1,134 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Test';
+            src: url('font/Montserrat-Regular.ttf');
+        }
+
+        * {
+            outline: none;
+            font-family: "Test";
+        }
+
+        button {
+            border: none;
+        }
+
+        [type="radio"]:checked,
+        [type="radio"]:not(:checked) {
+            position: absolute;
+            left: -9999px;
+        }
+        [type="radio"]:checked + label,
+        [type="radio"]:not(:checked) + label
+        {
+            position: relative;
+            padding-left: 28px;
+            cursor: pointer;
+            line-height: 20px;
+            display: inline-block;
+            color: #666;
+        }
+        [type="radio"]:checked + label:before,
+        [type="radio"]:not(:checked) + label:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 17px;
+            height: 17px;
+            border: 2px solid #4b85ff;
+            border-radius: 100%;
+            background: #4b85ff;
+        }
+        [type="radio"]:checked + label:after,
+        [type="radio"]:not(:checked) + label:after {
+            content: "\f00c";
+            width: 16px;
+            height: 15px;
+            color: #fff;
+            position: absolute;
+            top: 0px;
+            left: 2.5px;
+            border-radius: 100%;
+            -webkit-transition: all 0.2s ease;
+            transition: all 0.2s ease;
+            font-family: 'FontAwesome';
+        }
+        [type="radio"]:not(:checked) + label:after {
+            opacity: 0;
+            -webkit-transform: scale(0);
+            transform: scale(0);
+        }
+        [type="radio"]:checked + label:after {
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+
+        .button-submit {
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 12px;
+            padding: 5px;
+            text-align: center;
+            background-color: #4b85ff;
+        }
+
+        .question {
+            color: #1d2129;
+            font-size: 15px;
+        }
+
+        .answer {
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <span class="question">Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi Đặt câu hỏi </span>
+</div>
+<div>
+    <p>
+        <input type="radio" id="test1" name="radio-group" checked>
+        <label for="test1">
+            <span class="answer">Tùy chọn 00001</span>
+        </label>
+    </p>
+    <p>
+        <input type="radio" id="test2" name="radio-group" checked>
+        <label for="test2">
+            <span class="answer">Tùy chọn 00002</span>
+        </label>
+    </p>
+    <p>
+        <input type="radio" id="test3" name="radio-group" checked>
+        <label for="test3">
+            <span class="answer">Tùy chọn 00003</span>
+        </label>
+    </p>
+</div>
+<div>
+    <button class="button-submit">
+        Trả lời câu hỏi
+    </button>
+</div>
+<div>
+
+</div>
+<script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script>
+    function onClick(event) {
+        console.log(event)
+    }
+</script>
+</body>
+</html>

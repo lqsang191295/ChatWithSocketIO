@@ -1,0 +1,383 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        * {
+            outline: none;
+        }
+
+        button {
+            border: none;
+        }
+
+        input.input-text {
+            background-color: rgba(0, 0, 0, .05);
+            border-radius: 3px;
+            font-size: 12px;
+            padding: 5px;
+            border: 1px solid #bdc7d8;
+            width: 100%;
+        }
+
+        ._5n1- {
+            cursor: pointer;
+            height: 20px;
+            width: 20px;
+        }
+        [type="radio"]:checked,
+        [type="radio"]:not(:checked) {
+            position: absolute;
+            left: -9999px;
+        }
+        [type="radio"]:checked + label,
+        [type="radio"]:not(:checked) + label
+        {
+            position: relative;
+            padding-left: 28px;
+            cursor: pointer;
+            line-height: 20px;
+            display: inline-block;
+            color: #666;
+        }
+        [type="radio"]:checked + label:before,
+        [type="radio"]:not(:checked) + label:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 17px;
+            height: 17px;
+            border: 2px solid #4b85ff;
+            border-radius: 100%;
+            background: #4b85ff;
+        }
+        [type="radio"]:checked + label:after,
+        [type="radio"]:not(:checked) + label:after {
+            content: "\f00c";
+            width: 16px;
+            height: 15px;
+            color: #fff;
+            position: absolute;
+            top: 0px;
+            left: 2.5px;
+            border-radius: 100%;
+            -webkit-transition: all 0.2s ease;
+            transition: all 0.2s ease;
+            font-family: 'FontAwesome';
+        }
+        [type="radio"]:not(:checked) + label:after {
+            opacity: 0;
+            -webkit-transform: scale(0);
+            transform: scale(0);
+        }
+        [type="radio"]:checked + label:after {
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+
+        .input-text-1 {
+            background: #f7f7f7;
+            border: 0;
+            outline: 0;
+            font-size: 11px;
+            border-radius: 3px;
+            box-sizing: border-box;
+            cursor: default;
+            display: inline-block;
+            font-weight: normal;
+            margin: 0;
+            position: relative;
+            vertical-align: middle;
+            padding: 5px 5px;
+            color: #7b7b7b;
+        }
+
+        .button-add {
+            background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yJ/r/mKLCox1YTGq.png);
+            background-repeat: no-repeat;
+            background-size: auto;
+            background-position: -26px -324px;
+            background-color: transparent;
+            border: 0 none;
+            cursor: pointer;
+            font-size: 0 !important;
+            overflow: hidden;
+            padding: 0;
+            vertical-align: middle;
+            margin: 10px 0 0 0;
+            height: 15px;
+            width: 13px;
+        }
+
+        .button-close {
+            background-image: url("https://static.xx.fbcdn.net/rsrc.php/v3/yJ/r/mKLCox1YTGq.png");
+            background-repeat: no-repeat;
+            background-size: auto;
+            background-position: -42px -213px;
+            background-color: transparent;
+            border: 0 none;
+            cursor: pointer;
+            font-size: 0 !important;
+            overflow: hidden;
+            padding: 0;
+            vertical-align: middle;
+            margin: 3px;
+            height: 10px;
+            width: 10px;
+        }
+
+        .button-submit {
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 12px;
+            padding: 5px;
+            text-align: center;
+            background-color: #4b85ff;
+        }
+
+        .box-question {
+            float: left;
+            width: calc(100% - 340px - 45px);
+            padding: 0 5px;
+            margin: 5px;
+        }
+
+        .box-chat {
+            float: left;
+            width: 340px;
+            border: 1px solid #ccc;
+            padding: 5px;
+            margin: 5px;
+            height: calc(100% - 20px);
+            position: relative;
+        }
+
+        .chat-line__status, .chat-line-message {
+            padding: 2px 5px;
+            font-size: 13px;
+            color: #19171c;
+        }
+
+        .chat-line-message .profile-name {
+            padding-left: 5px;
+            padding-right: 5px;
+            color: #797979;
+            font-weight: bold;
+        }
+
+        .profile-img img{
+            border-radius: 50%;
+            position: relative;
+            top: 7px;
+        }
+
+        .chat-line-bottom {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            padding: 10px;
+        }
+
+        .chat-line-bottom-input {
+            width: 100%;
+            border: 1px solid #bdc7d8;
+            background: #f2f2f2;
+            padding: 9px 39px 9px 9px;
+            font-size: 11px;
+            border-radius: 3px;
+        }
+
+        .chat-line-bottom-b {
+            padding-top: 10px;
+        }
+
+        .chat-line-bottom-t {
+            position: relative;
+        }
+
+        .chat-line-bottom-b i {
+            cursor: pointer;
+        }
+
+        .chat-line-bottom-button {
+            padding: 5px 10px;
+            float: right;
+            cursor: pointer;
+        }
+
+        .chat-line-bottom-icon-input {
+            right: 0;
+            position: absolute;
+            top: 0;
+        }
+
+        .chat-line-bottom-icon {
+            width: 20px;
+            height: 26px;
+            margin: 3px 3px 3px 0;
+            padding: 0 6px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .chat-line-bottom-icon:hover {
+            background: #dadada;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box-question">
+        <div>
+            <input class="input-text" type="text" placeholder="Đặt câu hỏi" />
+        </div>
+        <div>
+            <button class="button-add">
+
+            </button>
+
+            <p>
+                <input type="radio" id="test1" name="radio-group" checked>
+                <label for="test1">
+                    <input class="input-text-1" type="text" placeholder="Thêm một tùy chọn" />
+                </label>
+                <button class="button-close"></button>
+            </p>
+            <p>
+                <input type="radio" id="test2" name="radio-group" checked>
+                <label for="test2">
+                    <input class="input-text-1" type="text" placeholder="Thêm một tùy chọn" />
+                </label>
+                <button class="button-close"></button>
+            </p>
+            <p>
+                <input type="radio" id="test3" name="radio-group" checked>
+                <label for="test3">
+                    <input class="input-text-1" type="text" placeholder="Thêm một tùy chọn" />
+                </label>
+                <button class="button-close" onclick="onClick(event)"></button>
+            </p>
+        </div>
+        <div>
+            <button class="button-submit">
+                Tạo cuộc thăm dò ý kiến
+            </button>
+        </div>
+    </div>
+
+    <!--Div chat box-->
+    <div class="box-chat">
+        <div class="chat-line__status">
+            <span class="">Chào mừng bạn đến với phòng trò chuyện!</span>
+        </div>
+
+        <div class="chat-line-message">
+            <span class="profile profile-img">
+                <img src="https://yt3.ggpht.com/-J9PM3Bz_Msk/AAAAAAAAAAI/AAAAAAAAAAA/ntSGZ_bc66Y/s32-c-k-no-mo-rj-c0xffffff/photo.jpg" width="21px"
+                height="21px"/>
+            </span>
+            <span class="profile profile-name">
+                Sang Le:
+            </span>
+            <span class="profile profile-message">Hello!</span>
+        </div>
+        <div class="chat-line-message">
+            <span class="profile profile-img">
+                <img src="https://yt3.ggpht.com/-J9PM3Bz_Msk/AAAAAAAAAAI/AAAAAAAAAAA/ntSGZ_bc66Y/s32-c-k-no-mo-rj-c0xffffff/photo.jpg" width="21px"
+                     height="21px"/>
+            </span>
+            <span class="profile profile-name">
+                Sang Le:
+            </span>
+            <span class="profile profile-message">What a dumdum</span>
+        </div>
+        <div class="chat-line-message">
+            <span class="profile profile-img">
+                <img src="https://yt3.ggpht.com/-J9PM3Bz_Msk/AAAAAAAAAAI/AAAAAAAAAAA/ntSGZ_bc66Y/s32-c-k-no-mo-rj-c0xffffff/photo.jpg" width="21px"
+                     height="21px"/>
+            </span>
+            <span>
+                <span class="profile profile-name">
+                    Sang Le:
+                </span>
+                <span class="profile profile-message">snoozle225 Yeah you can't sign up for a new account but you can sign in</span>
+            </span>
+        </div>
+
+        <!---->
+        <div class="chat-line-bottom">
+            <div class="chat-line-bottom-t">
+                <style>
+                    .popup-chat-line {
+                        width: 100%;
+                        height: 300px;
+                        border: 1px solid #ccc;
+                        position: absolute;
+                        bottom: 35px;
+                        border-radius: 3px;
+                    }
+
+                    .popup-chat-line .header{
+                        padding: 6px;
+                        text-align: right;
+                    }
+
+                    .popup-chat-line .body {
+                        padding: 0 5px;
+                    }
+
+                    .popup-chat-line .body input{
+                        width: 100%;
+                        border: 1px solid #bdc7d8;
+                        background: #f2f2f2;
+                        padding: 9px 39px 9px 9px;
+                        font-size: 11px;
+                        border-radius: 3px;
+                    }
+                </style>
+
+                <div class="popup-chat-line">
+                    <div class="header">
+                        <div class="close">X</div>
+                    </div>
+                    <div class="body">
+                        <input class="" type="text" placeholder="Gửi tin nhắn">
+                    </div>
+                </div>
+
+                <!--End popup-->
+
+                <input class="chat-line-bottom-input" type="text" placeholder="Gửi tin nhắn"/>
+                <div class="chat-line-bottom-icon-input">
+                    <div class="chat-line-bottom-icon">
+                            <div class="tw-align-items-center tw-full-width tw-icon tw-icon--fill tw-inline-flex"><div class="tw-aspect tw-aspect--align-top"><div class="tw-aspect__spacer"></div><svg class="tw-icon__svg" width="100%" height="100%" version="1.1" viewBox="0 0 20 20" x="0px" y="0px"><path d="M10 1a9 9 0 0 0-9 9 9 9 0 0 0 9 9 9 9 0 0 0 9-9 9 9 0 0 0-9-9m0 2c3.859 0 7 3.141 7 7s-3.141 7-7 7-7-3.141-7-7 3.141-7 7-7zm4 6a1 1 0 1 0-2 0 1 1 0 1 0 2 0zM8 9a1 1 0 1 0-2 0 1 1 0 1 0 2 0zm4.571 3H7.428c-.237 0-.428.168-.428.375C7 13.822 8.345 15 10 15c1.654 0 3-1.178 3-2.625 0-.207-.192-.375-.429-.375z" fill-rule="evenodd"></path></svg></div></div></div>
+                </div>
+            </div>
+            <div class="chat-line-bottom-b">
+                <i class="fa fa-cog" aria-hidden="true"></i>
+                <button class="chat-line-bottom-button">
+                    Send
+                </button>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+<script>
+    function onClick(event) {
+        console.log(event)
+    }
+</script>
+</body>
+</html>
